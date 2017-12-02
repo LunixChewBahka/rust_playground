@@ -2,9 +2,19 @@ extern crate rand;
 
 use rand::{thread_rng, Rng};
 
-fn main() {
-    let mut rng = thread_rng();
+struct HasDrop;
 
+
+impl Drop for HasDrop {
+    fn drop(&mut self) {
+        println!("Dropping!");
+    }
+}
+
+fn main() {
+    fn_fill_bytes();
+    println!("-------------------- fill_bytes_example END -------------------- ");
+    let mut rng = thread_rng();
     let mut count = 0u32;
 
     loop {
@@ -14,10 +24,19 @@ fn main() {
 
         count += 1;
 
-        if count == 100 {
-            println!("Time to stop. We have already reached {}", count);
+        if count == 5 {
+            println!("New policy. Should stop at {}", count);
             break;
         }
-
     }
+
+    let _x = HasDrop;
+    drop(_x);
+
+}
+
+fn fn_fill_bytes() {
+    let mut fb = [0u8; 100];
+    thread_rng().fill_bytes(&mut fb);
+    println!("{:?}", &fb[..]);
 }

@@ -1,0 +1,8 @@
+[package]
+name = "example_regex"
+version = "0.1.0"
+authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
+
+[dependencies]
+time = "*"
+regex = "*"
