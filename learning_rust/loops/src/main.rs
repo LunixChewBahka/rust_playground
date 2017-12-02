@@ -31,6 +31,7 @@ fn main() {
         bat_size: 55.4,
     };
 
+
     let bat_two = Bat {
         bat_name: "Jarry".to_string(),
         bat_size: 99.5,
@@ -44,4 +45,17 @@ fn main() {
                  itter,
                  cur.bat_name);
     }
+
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    assert_eq!(result, 20);
+    println!("{}", result);
 }
