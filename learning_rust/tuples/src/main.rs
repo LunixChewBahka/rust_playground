@@ -4,9 +4,45 @@
     a difference: structs give each element that they contain a name, called a
     field.
 */
+
+use std::cmp::Ordering::{self, Equal, Less, Greater};
+
+fn cmp(a: i32, b: i32) -> Ordering {
+    if a < b { Ordering::Less }
+    else if a > b { Ordering::Greater }
+    else { Ordering::Equal }
+}
+
+// basic struct implementation
 struct Point {
     x: i32,
     y: i32,
+}
+
+// tuple struct implementation; no field names
+struct Colorv2(i32, i32, i32);
+struct Pointv2(i32, i32, i32);
+
+// tuple struct with 1 element
+struct Inches(i32);
+
+// struct implementation rather than tuple struct; with field names
+struct Colorv3 {
+    red: i32,
+    blue: i32,
+    green: i32,
+}
+
+struct Pointv3 {
+    x: i32,
+    y: i32,
+    z: i32,
+}
+
+// enums aka "sum type"
+enum Character {
+    Digit(i32),
+    Other,
 }
 
 fn main() {
@@ -63,6 +99,43 @@ fn main() {
     mut_origin.x = 99;
     mut_origin.y = 99;
     println!("The mutated origin is at ({}, {})", mut_origin.x, mut_origin.y);
+
+    let blackv2 = Colorv2(0, 0, 0);
+    let originv2 = Pointv2(0, 0, 0);
+
+    let mut greenv3 = Colorv3 { red: 0, blue: 0, green: 0};
+    println!("Original greenv3 ({} {} {})", greenv3.red, greenv3.blue, greenv3.green);
+    greenv3.red = 0;
+    greenv3.blue = 255;
+    greenv3.green = 255;
+    println!("Original greenv3 ({} {} {})", greenv3.red, greenv3.blue, greenv3.green);
+
+
+    let length = Inches(10);
+
+    let Inches(integer_length) = length;
+    println!("length is {:?} inches", integer_length);
+
+    // These assignment both succeed
+    let ten = Character::Digit(10);
+    let four = Character::Digit(4);
+
+    // Error: `*` is not implement for type `Character`
+    //let forty = ten * four;
+
+    // Error: `<=` is not implemented for type `Character`
+    //let four_is_smaller = four <= ten;
+
+    // Error: `==` is not implemented for type `Character`
+    //let four_equals_ten = four == ten;
+    let xo = 100;
+    let yo = 10;
+
+    let ordering = cmp(xo, yo);     // ordering: ordering
+
+    if ordering == Ordering::Less { println!("less"); }
+    else if ordering == Ordering::Greater { println!("Greater"); }
+    else if ordering == Ordering::Equal { println!("Equal"); }
 }
 
 fn pass_and_compare_tuples(t1: (i32, i32, i32), t2: (i32, i32, i32)) -> bool {
