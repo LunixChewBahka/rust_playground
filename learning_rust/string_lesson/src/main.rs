@@ -10,7 +10,7 @@ fn main() {
     let hello_world = "Hello from the other side.";
     println!("{:?}", hello_world);
 
-    let mut owned_string = String::from("hello ".to_owned());
+    let mut owned_string = String::from("hello ".to_owned().unwrap());
     let borrowed_string: &str = "world";
 
     owned_string.push_str(borrowed_string);
