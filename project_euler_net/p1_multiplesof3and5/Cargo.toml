@@ -1,5 +1,5 @@
 [package]
-name = "n1_multiples3and5"
+name = "p1_multiplesof3and5"
 version = "0.1.0"
 authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
 
