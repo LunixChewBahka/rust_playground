@@ -1,29 +1,15 @@
 pub fn raindrops(n: usize) -> String {
-    check_divisibility(n)
+    check_div(n)
 }
-
-// brute force what the f!
-// need to find a shorter, more elegant way
-// to get around this problem
-// will try match statement for the next iteration
-pub fn check_divisibility(n: usize) -> String {
-    // receives a num and returns a value 
-    // without a type (tuple by default)
-    if n % 3 == 0 && n % 5 == 0 && n % 7 == 0 {
-        return "PlingPlangPlong".to_string();
-    } else if n % 3 == 0 && n % 5 == 0 {
-        return "PlingPlang".to_string();
-    } else if n % 3 == 0 && n % 7 == 0 {
-        return "PlingPlong".to_string();
-    } else if n % 5 == 0 && n % 7 == 0 {
-        return "PlangPlong".to_string();
-    } else if n % 7 == 0 {
-        "Plong".to_string()
-    } else if n % 5 == 0 {
-        "Plang".to_string()
-    } else if n % 3 == 0 {
-        "Pling".to_string()
-    } else {
-        n.to_string()
+pub fn check_div(n: usize) -> String {
+    match (n%3, n%5, n%7) { // Pling, Plang, Plong
+        (0, 0, 0) => "PlingPlangPlong".to_owned(),
+        (0, 0, _) => "PlingPlang".to_owned(),
+        (0, _, 0) => "PlingPlong".to_owned(),
+        (_, 0, 0) => "PlangPlong".to_owned(),
+        (0, _, _) => "Pling".to_owned(),
+        (_, 0, _) => "Plang".to_owned(),
+        (_, _, 0) => "Plong".to_owned(),
+        (_, _, _) => n.to_string()
     }
 }
