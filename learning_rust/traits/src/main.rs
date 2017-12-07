@@ -1,37 +1,58 @@
-use std::fmt;
-
-#[derive(Debug)]
-struct Vector2D {
-    x: isize,
-    y: isize,
+trait Area {
+    fn area(&self) -> i32;
+    fn new() -> Self;
 }
 
-impl fmt::Display for Vector2D {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        // The 'f' value implements the `Write` trait, which is what the write!
-        // marco is expecting. Note that this formatting ignores the various
-        // flags provided to format strings.
-        write!(f, "({}, {})", self.x, self.y)
+struct Rectangle {
+    x: i32,
+    y: i32,
+    w: i32,
+    h: i32,
+}
+
+impl Area for Rectangle {
+    fn area(&self) -> i32 {
+        self.w * self.h
+    }
+
+    fn new() -> Self {
+        Rectangle{ x: 0, y: 0, w: 1, h: 1 }
     }
 }
 
-// Different traits allow different forms our output of a type. The meaning
-// of this format is to print the magniture of a vector.
-impl fmt::Binary for Vector2D {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let magnitude = (self.x * self.x + self.y * self.y) as f64;
-        let magnitude = magnitude.sqrt();
+struct Square {
+    x: i32,
+    y: i32,
+    w: i32,
+}
 
-        let decimals = f.precision().unwrap_or(3);
-        let string = format!("{:.*}", decimals, magnitude);
-        f.pad_integral(true, "", &string)
+impl Area for Square {
+    fn area(&self) -> i32  {
+        self.w * self.w
+    }
+
+    fn new() -> Self {
+        Square{ x: 0, y: 0, w: 1 }
     }
 }
 
+// Error: `T` is not guaranteed to have the `area()` method.
+// error[E0599]: no method named `area` found for type `T` in the current scope
+fn print_area<T: Area>(x: T) {
+    println!("{}", x.area());
+}
+
+// OK: `T` is bounded by `Area`
+fn new_area<T: Area>() -> T {
+    // Since 'new()' doesn't take any value, we must call 'new()' directly.
+    T::new()
+}
+
+ 
 fn main() {
-    let myvector = Vector2D { x: 3, y: 4 };
+    let x: Rectangle = new_area();
+    let y = new_area::<Square>();
 
-    println!("{}", myvector);
-    println!("{:?}", myvector);
-    println!("{:10.3b}", myvector);
+    print_area(x);
+    print_area(y);
 }
