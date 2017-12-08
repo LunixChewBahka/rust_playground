@@ -1,8 +1,0 @@
-[package]
-name = "txt_manip"
-version = "0.1.0"
-authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
-
-[dependencies]
-scan_fmt = "*"
-text_io = "*"

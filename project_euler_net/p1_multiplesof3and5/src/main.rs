@@ -9,19 +9,15 @@
 */
 fn main() {
     // Let us start with 10 first before we go 1000
-    let below_ten: u32 = 1000;
+    // using collected iterator - which works like a charm :D
+    //let mut nums_below_1000: Vec<u32> = (0..10).collect();
+    //println!("Collected (0..1000) into: {:?}", nums_below_1000);
+    let foo: Vec<u32> = (0..10).collect();
+    for (i, item) in foo.iter().enumerate() {
 
-    let mut sum_val = 0u32;
-    // iterate using for loop 0..1000 
-    for value in 0u32..below_ten {
-        if value % 3 == 0 || value % 5 == 0 {
-            println!("{} is a multiple of 3 or 5.", value);
-            sum_val += value;
-        } else {
-            println!("-");
-        }
-        //println!("[{}] Hello, world!; Value = {}; sum_val: {}", index, value, sum_val); 
+        //println!("Found index [{}]: item is {}", i, item);
     }
+
+    //println!("{}", val_sum);
     // answer should be 233,168
-    println!("The sum of all the multiples of 3 or 5 is: {:?}", sum_val);
 }

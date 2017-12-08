@@ -1,7 +1,0 @@
-[package]
-name = "rand_lib"
-version = "0.1.0"
-authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
-
-[dependencies]
-rand = "*"

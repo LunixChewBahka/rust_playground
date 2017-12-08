@@ -1,8 +1,0 @@
-[package]
-name = "response_timer_example_iron"
-version = "0.1.0"
-authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
-
-[dependencies]
-iron = "*"
-time = "*"

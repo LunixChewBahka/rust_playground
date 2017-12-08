@@ -1,6 +1,0 @@
-[package]
-name = "struct_literals_vs_constructors"
-version = "0.1.0"
-authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
-
-[dependencies]
