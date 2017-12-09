@@ -1,0 +1,6 @@
+[package]
+name = "o1_variable_scope"
+version = "0.1.0"
+authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
+
+[dependencies]

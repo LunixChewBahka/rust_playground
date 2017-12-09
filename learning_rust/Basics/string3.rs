@@ -8,10 +8,12 @@ fn main() {
     println!("len {}", multilingual.len());
     println!("count {}", multilingual.chars().count());
 
-    let maybe = multilingual.find('п');
-    if maybe.is_some() {
-        let hi = &multilingual[maybe.unwrap()..];
-        println!("Russian hi {}", hi);
+    match multilingual.find('п') {
+        Some(idx) => {
+            let hi = &multilingual[idx..];
+            println!("Russian hi {}", hi);
+        },
+        None => println!("couldn't find the greeting, привет")
     }
 
     let s = "i";
