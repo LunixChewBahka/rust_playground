@@ -1,6 +1,4 @@
-pub fn reverse(_: &str) -> String {
-    let word = "robot";
-    let drow: String;
-    drow = word.chars().rev().collect::<String>();
-    return drow;
+pub fn reverse(word: &str) -> String {
+    let drow: String = word.chars().rev().collect::<String>();
+    drow
 }
