@@ -1,0 +1,6 @@
+[package]
+name = "o2_tp_ownership_functions"
+version = "0.1.0"
+authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
+
+[dependencies]
