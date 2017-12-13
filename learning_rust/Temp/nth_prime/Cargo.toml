@@ -1,0 +1,8 @@
+[package]
+name = "nth_prime"
+version = "0.1.0"
+authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
+
+[dependencies]
+num = "*"
+num-traits = "*"
