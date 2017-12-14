@@ -1,11 +1,19 @@
 // Bubble Sort implementation in rust programming
+
 fn main() {
-    let mut arr = [9, 81, 11, 7, 9, 0, 27, 55, 69];
-    println!("This is {:?}", arr);
-    change_value(&mut arr);
-    println!("This is {:?}", arr);
+    let v = vec![99, 11, 10, 8, 55, 35, 125, 500, 1];
+    println!("{:?}", v);
+    println!("{:?}", bubble_sort(&v));
 }
 
-fn change_value(arr: &mut [i32]) {
-    arr[4] = 88
+fn bubble_sort(vec_to_sort: &Vec<i32>) -> Vec<i32> {
+    let mut result = vec_to_sort.clone();
+    for i in 0..result.len() {
+        for y in 0..result.len() {
+            if result[i] < result [y] {
+                result.swap(i, y);
+            }
+        }
+    }
+    return result;
 }

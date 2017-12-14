@@ -1,0 +1,6 @@
+[package]
+name = "o7_hardpart"
+version = "0.1.0"
+authors = ["lunixchewbahka <lunixchewbahka@gmail.com>"]
+
+[dependencies]
