@@ -9,7 +9,6 @@ fn main() {
         return;
     }
 
-
     let window = Window::new(WindowType::Toplevel);
     window.set_title("First GTK+ Program");
     window.set_default_size(350, 70);

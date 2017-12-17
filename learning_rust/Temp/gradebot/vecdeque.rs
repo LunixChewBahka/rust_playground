@@ -1,6 +1,20 @@
 use std::collections::VecDeque;
 
 fn main() {
+    let a = [1, 2, 3];
+    let doubled: Vec<i32> = a.iter()
+        .map(|&x| x * 2)
+        .collect::<Vec<_>>();
+
+    println!("{:?}", doubled);
+
+    let charst = ['g', 'd', 'k', 'k', 'n'];
+    let hello: String = charst.iter()
+        .map(|&x| x as u8)
+        .map(|x| (x + 1) as char)
+        .collect();
+    println!("{:?}", hello);
+
     let mut vector: VecDeque<u32> = VecDeque::new();
 
     vector.push_back(0);
